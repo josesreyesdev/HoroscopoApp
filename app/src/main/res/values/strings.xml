@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Horoscopo App</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="list">.Listado</string>
+    <string name="compatibility">.Compatibilidad</string>
+    <string name="information">.Información</string>
 </resources>
