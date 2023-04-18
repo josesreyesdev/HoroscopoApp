@@ -6,9 +6,11 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/im"
+        android:id="@+id/imageBack"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        />
+        android:src="@drawable/card_back"
+        android:scaleType="fitXY"
+        android:contentDescription="@null" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

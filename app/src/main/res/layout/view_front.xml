@@ -5,4 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/ivLuckyCard"
+        android:layout_width="match_parent"
+        android:src="@drawable/card_reverse"
+        android:scaleType="fitXY"
+        android:layout_height="match_parent"
+        android:contentDescription="@null" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
