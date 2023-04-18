@@ -7,13 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.example.horoscopoapp.R
-import com.example.horoscopoapp.ui.compatibility.CompatibilityViewModel
+import com.example.horoscopoapp.databinding.FragmentInformationBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class InformationFragment : Fragment() {
 
     private val viewModel by viewModels<InformationViewModel>()
+    private var _binding : FragmentInformationBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,9 +25,15 @@ class InformationFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_information, container, false)
+        _binding = FragmentInformationBinding.inflate( inflater, container, false)
+        return binding.root
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
 }
