@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.example.horoscopoapp.databinding.FragmentListBinding
+import com.example.horoscopoapp.ui.detail.DetailActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -29,16 +30,27 @@ class ListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.apply {
-            btnCapricornio.setOnClickListener {  }
+            btnCapricornio.setOnClickListener {
+                showDetail()
+            }
 
-            btnAries.setOnClickListener {  }
+            btnAries.setOnClickListener {
+                showDetail()
+            }
 
-            btnLeo.setOnClickListener {  }
+            btnLeo.setOnClickListener {
+                showDetail()
+            }
         }
     }
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    private fun showDetail() {
+        //val intent = Intent( requireContext(), DetailActivity::class.java)
+        startActivity( DetailActivity.create(requireContext()))
     }
 }
