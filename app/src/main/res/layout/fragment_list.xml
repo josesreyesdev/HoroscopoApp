@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:padding="8dp"
     tools:context=".ui.list.ListFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <Button
+        android:id="@+id/btn_capricornio"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/list" />
+        android:layout_height="wrap_content"
+        android:text="@string/capricornio"/>
 
-</FrameLayout>
+    <Button
+        android:id="@+id/btn_leo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/leo"/>
+
+    <Button
+        android:id="@+id/btn_aries"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/aries"/>
+
+</LinearLayout>

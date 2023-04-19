@@ -55,6 +55,11 @@ class LuckyFragment : Fragment() {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
+
     private fun flipCard() {
         try {
             //Visibilidad
