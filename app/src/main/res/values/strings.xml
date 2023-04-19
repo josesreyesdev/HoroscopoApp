@@ -4,4 +4,7 @@
     <string name="list">List</string>
     <string name="compatibility">Lucky</string>
     <string name="information">Information</string>
+    <string name="capricornio">Capricornio</string>
+    <string name="leo">Leo</string>
+    <string name="aries">Aries</string>
 </resources>
