@@ -63,7 +63,7 @@ class DetailActivity : AppCompatActivity() {
                         binding.apply {
                             loading.isVisible = false
                         }
-                        Toast.makeText(this@DetailActivity, "Ha funcionado!!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@DetailActivity, uiState.horoscopeModel.horoscope, Toast.LENGTH_SHORT).show()
                         Log.i(TAG, "Response success: $uiState")
                     }
                 }

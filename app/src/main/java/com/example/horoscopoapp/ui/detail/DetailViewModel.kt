@@ -2,8 +2,10 @@ package com.example.horoscopoapp.ui.detail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.horoscopoapp.data.network.model.HoroscopeResponse
+import com.example.horoscopoapp.core.network.ResultType
 import com.example.horoscopoapp.domain.GetHoroscopeUseCase
+import com.example.horoscopoapp.domain.dto.HoroscopeDTO
+import com.example.horoscopoapp.domain.model.HoroscopeModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -12,7 +14,7 @@ import javax.inject.Inject
 
 sealed class DetailUIState {
     object Loading : DetailUIState()
-    data class Success(val horoscopeResponse: HoroscopeResponse) : DetailUIState()
+    data class Success(val horoscopeModel: HoroscopeModel) : DetailUIState()
     data class Error( val msg: String) : DetailUIState()
 }
 
@@ -24,10 +26,15 @@ class DetailViewModel @Inject constructor(private val getHoroscopeUseCase: GetHo
 
     fun getHoroscope() {
         viewModelScope.launch {
-            getHoroscopeUseCase()
-                .collect{ horoscope ->
-                    if ( horoscope != null) {
-                        _uiState.value = DetailUIState.Success(horoscope)
+            getHoroscopeUseCase(HoroscopeDTO(sign = "aries"))
+                .collect{ result ->
+                    when (result) {
+                        is ResultType.Error -> {
+                            _uiState.value = DetailUIState.Error(result.msg ?: "Mensaje de Error")
+                        }
+                        is ResultType.Success -> {
+                            _uiState.value = DetailUIState.Success(result.data!!)
+                        }
                     }
                 }
         }

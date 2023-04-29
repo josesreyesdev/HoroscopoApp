@@ -13,7 +13,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
 
-private const val BASE_URL = "https://aztro.sameerkumar.website"
+private const val BASE_URL = "https://newastro.vercel.app/"
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
@@ -23,6 +23,7 @@ private val moshi = Moshi.Builder()
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
+    //Interceptor de error
     @Provides
     @Singleton
     fun provideOkHttpClient(): OkHttpClient {
