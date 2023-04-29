@@ -29,19 +29,9 @@ class ListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.apply {
-            btnCapricornio.setOnClickListener {
-                showDetail()
-            }
-
-            btnAries.setOnClickListener {
-                showDetail()
-            }
-
-            btnLeo.setOnClickListener {
-                showDetail()
-            }
-        }
+        binding.btnCapricornio.setOnClickListener { showDetail() }
+        binding.btnAries.setOnClickListener { showDetail() }
+        binding.btnLeo.setOnClickListener { showDetail() }
     }
 
     override fun onDestroy() {
