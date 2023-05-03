@@ -14,6 +14,4 @@ interface HoroscopeApi {
         @Query("date") date: String,
         @Query("lang") lang: String,
     ): Response<HoroscopeResponse>
-
-
 }
