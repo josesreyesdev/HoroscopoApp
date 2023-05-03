@@ -31,11 +31,19 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        initUI()
-        viewModel.getHoroscope()
+        val horoscopos = listOf(
+            "aries", "taurus", "gemini", "cancer",
+            "leo", "virgo", "libra", "scorpio",
+            "sagittarius", "capricorn", "aquarius", "pisces"
+        )
+        //capricornio
+        val horoscope = horoscopos.random()
+
+        initUI(horoscope)
+        viewModel.getHoroscope(horoscope)
     }
 
-    private fun initUI() {
+    private fun initUI( horoscope: String) {
         lifecycleScope.launch {
             //repeatOnLifecycle(lifecycle.State.STARTED) {
             viewModel.uiState.collect { uiState ->
@@ -44,7 +52,7 @@ class DetailActivity : AppCompatActivity() {
                         //mostrar dialogo de error
                         binding.apply {
                             loading.isVisible = false
-                            Toast.makeText(this@DetailActivity, "Error!!", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@DetailActivity, "Error!, no encontre $horoscope!", Toast.LENGTH_SHORT).show()
                             Log.i(TAG, "Response error: $uiState")
                         }
                     }
@@ -63,7 +71,7 @@ class DetailActivity : AppCompatActivity() {
                         binding.apply {
                             loading.isVisible = false
                         }
-                        Toast.makeText(this@DetailActivity, uiState.horoscopeModel.horoscope, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@DetailActivity, "$horoscope: ${uiState.horoscopeModel.horoscope}", Toast.LENGTH_SHORT).show()
                         Log.i(TAG, "Response success: $uiState")
                     }
                 }
